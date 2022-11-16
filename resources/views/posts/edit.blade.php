@@ -3,7 +3,8 @@
 @section('title') create @endsection
 
 @section('content')
-<form method="POST" action="{{route('posts.update',['post' => $post->id])}}">
+<div class="container">
+  <form method="POST" action="{{route('posts.update',['post' => $post->id])}}">
   @csrf
   @method('PUT')
   <div class="form-group mb-3">
@@ -28,4 +29,6 @@
 
   <button type="submit" class="btn btn-primary">Update Post</button>
 </form>
+</div>
+
 @endsection

@@ -32,7 +32,7 @@ class PostController extends Controller
 
     //Route Model Binding
 
- public function show(POST $post)
+    public function show(POST $post)
     {
         // dd($post);
 
@@ -49,7 +49,7 @@ class PostController extends Controller
     }
 
 
-    public function store()
+    public function store(StorePostRequest $request)
     {
         //resolve request through service container #1
         //you can put as parameter Request $request known as service container which uses dependency injection
@@ -57,15 +57,18 @@ class PostController extends Controller
         //$title=$request->title
         //$description=$request->description
 
-        //request()->validate([
+        //validators are in make:request controller this is just a sample
+        // request()->validate([
         //         'title'=> ['required','min:3'],
         //         'description'=> ['required', 'min:5']
         //     ],[
-        //         'title.required'=> 'custom message'
+        //         'title.required'=> 'custom message like title is required',
+        //         'title.min' => 'override title min message'
         //         ]
 
         // );
-        // $post= $_POST;
+
+
         //need fillable to avoid csrf #2
         $data = request()->all();
         Post::create([
@@ -98,12 +101,12 @@ class PostController extends Controller
         // dd($postId);
         $Singlepost = Post::findorFail($postId);
         // dd($Singlepost);
-        return view('posts.edit', ['post' => $Singlepost, 'allUsers'=>$allUsers]);
+        return view('posts.edit', ['post' => $Singlepost, 'allUsers' => $allUsers]);
     }
     public function edit(POST $post)
-    {//route model binding
+    { //route model binding
         $allUsers = User::all();
-        return view('posts.edit', ['post' => $post, 'allUsers'=> $allUsers]);
+        return view('posts.edit', ['post' => $post, 'allUsers' => $allUsers]);
     }
 
     public function update($postId, Request $request)
@@ -113,7 +116,7 @@ class PostController extends Controller
         $Singlepost->update([
             'title' => $request->title,
             'description' => $request->description,
-            'user_id'=> $request->post_creator
+            'user_id' => $request->post_creator
         ]);
         return redirect()->route('posts.index');
     }

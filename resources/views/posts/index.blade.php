@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('title') Index @endsection
 @section('content')
-<div class="text-center">
+<div class="container">
+  <div class="text-center">
   <a href="{{route('posts.create')}}" class="mt-4 btn btn-success">Create Post</a>
 </div>
 <table class="table mt-4">
@@ -43,5 +44,7 @@
 
   </tbody>
 </table>
+</div>
+
 
 @endsection

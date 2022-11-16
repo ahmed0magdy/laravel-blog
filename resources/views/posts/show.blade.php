@@ -3,7 +3,8 @@
 @section('title') Show @endsection
 
 @section('content')
-<div class="card">
+<div class="container">
+  <div class="card">
   <div class="card-header">
     Post Info
   </div>
@@ -13,4 +14,6 @@
     <h5 class="card-title">Description:- {{$post->description}}</h5>
   </div>
 </div>
+</div>
+
 @endsection

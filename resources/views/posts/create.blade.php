@@ -3,6 +3,7 @@
 @section('title') create @endsection
 
 @section('content')
+<div class="container">
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -12,7 +13,7 @@
         </ul>
     </div>
 @endif
-<form method="POST" action="{{route('posts.store')}}">
+  <form method="POST" action="{{route('posts.store')}}">
   @csrf
   <div class="mb-3">
     <label class="form-label">Title</label>
@@ -35,5 +36,7 @@
 
   <button type="submit" class="btn btn-primary">Create Post</button>
 </form>
+</div>
+
 
 @endsection
