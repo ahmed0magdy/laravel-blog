@@ -26,7 +26,8 @@ class StorePostRequest extends FormRequest
         return [
             request()->validate([
                 'title' => ['required', 'min:3'],
-                'description' => ['required', 'min:5']
+                'description' => ['required', 'min:5'],
+                'user_id' => ['required']
             ],[
                 'title.required' => 'my custom validation error message',
                  'title.min' => 'we have made override for min'

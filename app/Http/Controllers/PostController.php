@@ -72,6 +72,7 @@ class PostController extends Controller
         //need fillable to avoid csrf #2
         $data = request()->all();
         Post::create([
+            //database name => input name
             'title' => request()->title, //bec request returns object
             'description' => $data['description'], //bec data is array
             'user_id' => $data['post_creator']
